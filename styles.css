@@ -21,6 +21,12 @@ h1, h2, h3 {
     margin-left: -50px;
 }
 
+h4 {
+    font-family: "Kalnia";
+    font-weight: 500;
+    text-decoration: 2px underline wavy black;
+}
+
 table {
     font-family: "Kalnia";
     text-align: center;
@@ -455,4 +461,42 @@ overflow: hidden;
     div#hero li {
         min-width: 350px;
     }
+  }
+
+  #accentContainer {
+    max-width: 450px;
+    max-height: 50px;
+    padding: 10px;
+  }
+
+  .rad-io {
+    accent-color: yellowgreen;
+    float: left;
+  }
+
+  #details-columns {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+    white-space: nowrap;
+    gap: 50px;
+    max-width: 400px;
+    max-height: 250px;
+    justify-content: center;
+    margin: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .gender-column {
+    display: flex;
+    flex-direction: row;
+    max-width: 450px;
+    max-height: 100px;
+    justify-content: center;
+    margin-top: -20px;
+  }
+
+  fieldset {
+    border: none;
   }

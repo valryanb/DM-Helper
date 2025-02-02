@@ -134,7 +134,7 @@ function daysTravelled() {
 
 // 𑁔𑁔★ ACCENT GENERATOR ★𑁔𑁔 
 
-let accents = ["a French", "a German", "a Dutch", "an English (Cockney)", "a Scottish", "a Polish", "a Russian", "a Nigerian", "a Spanish", "an Egyptian", "an American (Southern)", "an American (New Yorker)", "a Norwegian"];
+let accents = ["a French", "a German", "a Dutch", "an English (Cockney)", "a Scottish", "a Polish", "a Russian", "a Somali", "a Spanish", "an Egyptian", "an American (Southern)", "an American (New Yorker)", "a Norwegian"];
 
 function randomizeAccent() {
     let accentsRandom = Math.floor(Math.random() * 13);
@@ -235,3 +235,66 @@ function playSound(wav) {
 //     "3": ["Ches", "The Claw of Sunsets"],
 // ]
 // };
+
+// 𑁔𑁔★ NPC DETAILS RANDOMIZER ★𑁔𑁔 
+const genders = ["Female","Feminine","Masculine","Male","Nonbinary","Genderless"];
+const species = ["Aarakocra",
+"Aasimar",
+"Bugbear",
+"Centaur",
+"Changeling",
+"Dragonborn",
+"Dwarf",
+"Elf (Drow)",
+"Elf (Eladrin)",
+"Elf (High-Elf)",
+"Elf (Wood-Elf)",
+"Fairy",
+"Firbolg",
+"Genasi (Air)",
+"Genasi (Earth)",
+"Genasi (Fire)",
+"Genasi (Water)",
+"Githyanki",
+"Gnome",
+"Goblin",
+"Goliath",
+"Half-Elf",
+"Half-Orc",
+"Halfling",
+"Hobgoblin",
+"Human",
+"Kenku",
+"Kobold",
+"Lizardfolk",
+"Orc",
+"Owlin",
+"Plasmoid",
+"Satyr",
+"Sea Elf",
+"Shadar-Kai",
+"Lycanthrope",
+"Tabaxi",
+"Thri-kreen",
+"Tiefling",
+"Triton",
+"Warforged",
+"Yuan-ti"];
+const age = ["Elder Adult","Young Adult","Teenager","Middle-Aged","Geriatric","Ancient"];
+
+let ageEl = document.getElementById("age");
+let speciesEl = document.getElementById("species");
+let genderEl = document.getElementById("gender");
+
+function randomizeNPC(){
+    let randomSpecies = Math.floor(Math.random() * species.length);
+    speciesEl.textContent = species[randomSpecies];
+
+    let randomGender = Math.floor(Math.random() * genders.length);
+    genderEl.textContent = genders[randomGender];
+    
+    let randomAge = Math.floor(Math.random() * age.length);
+    ageEl.textContent = age[randomAge];
+}
+
+randomizeNPC();

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <script src="index.js"></script>
+
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/6545/6545894.png">
     <title>DM Helper</title>
 </head>
@@ -98,14 +98,42 @@
             </div>
             
             Hours Travelled per Day: <input type="number" placeholder="0" id="daysInput" min="0" max="24"><br>
-            Walking Speed: <input type="number" placeholder="30 ft." id="speedInput"><button id="travel" onclick="daysTravelled()">Calculate</button><br>
+            Walking Speed: <input type="number" placeholder="30 ft." id="speedInput" min="10" max="100"><button id="travel" onclick="daysTravelled()">Calculate</button><br>
             Miles Travelled Total: <div id="highlight">You have walked <span id="milesTotal">0</span> miles.</div>
         </div>
         <div class="title" id="3">Character Tools</div>
         <div class="charaBox"><h3 style="margin-bottom: -10px">NPC Random Accent Generator</h3><p>
             <button onclick="randomizeAccent()" style="margin-bottom: 40px">Randomize</button>
-            <br>This character speaks with <span id="randomOutput" style="border: 1px solid black">a Welsh</span> accent.
-        </p></div>
+            <div id="accentContainer">
+            This character speaks with <span id="randomOutput" style="border: 1px solid black">a Welsh</span> accent.
+        </p></div></div>
+        <div class="charaBox"><h3 style="margin-bottom: -10px">NPC Random Details Generator</h3><p>
+        </p>
+        <p style="font-size:11px; margin-top:50px; max-width: 300px; margin:auto;">(By default, the gender is randomized. You can generate NPCs of specific genders using the selectors below.)</p>
+        <div id="details-columns">
+            <div><h4>Species</h4><p>
+                <span id="species"></span>
+            </p></div>
+            <div><h4>Age</h4><p>
+                <span id="age"></span>
+            </p></div>
+            <div><h4>Gender</h4><p>
+                <span id="gender"></span>
+            </p></div>
+        </div> 
+        <button onclick="randomizeNPC()" style="margin-bottom: 40px;">Randomize</button>
+
+        <fieldset>
+        <p style="font-size:14px;">
+            <span class="gender-column">
+                <input type="radio" class="rad-io" name="gender" checked> Random Gender<br>
+        <input type="radio" class="rad-io" name="gender"> Female<br>
+        <input type="radio" class="rad-io" name="gender"> Male<br>
+        <input type="radio" class="rad-io" name="gender"> Nonbinary
+            </span>
+    </p>
+    </fieldset>
+    </div>
         <div class="title" id="4">Immersive Tools</div>
         <div class="immersiveBox">
             <h3 style="margin-bottom: -10px">Atmospheric Sound Effect Board</h3><p>
@@ -137,6 +165,7 @@
             <input type="date">
             <p><h4><i>Date in the Forgotten Realms--</i></h4></p>
             <p><span id="convertResult">1st Day of Hammer (Deepwinter)</span></p>
-        </div>
+        </div>    
+        <script src="index.js"></script>
 </body>
 </html>
