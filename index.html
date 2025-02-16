@@ -26,7 +26,6 @@
         <ul><p>
             <i>Changelog / Coming Soon</i>
         </p>
-        <li> Current date in Faerun / DR and Faerun/DR calendar converter</li>
             <li>NPC Name Generator. When a name is used, you can click the 'use this name' button to remove it from the array. All used names will appear in a separate list with an input field where you can put notes, saved to local storage. Similar to a 'to do list' app. You can delete the lists / names with a separate button.</li>
             <li>Distances between famous DnD towns/cities.</li>
         </ul>
@@ -42,7 +41,7 @@
         <div class="flip-card">
             <div class="flip-card-inner" id="card"><span id="numeral">XVIII.</span>
                 <div class="flip-card-front" id="tarotText" style="text-align:center">☾</div>
-                <div class="flip-card-back" id="tarotText"><a href="http://dnd5e.wikidot.com/" style="margin-top: -130px; padding: 0px;" target="_blank"><button>d&d 5e wiki.dot</button></a></div>
+                <div class="flip-card-back" id="tarotText"><a href="http://dnd5e.wikidot.com/" style="margin-top: -60px; padding: 0px;" target="_blank"><button>d&d 5e wiki.dot</button></a></div>
             </div>
         </div>
 
@@ -110,7 +109,7 @@
         <div class="charaBox"><h3 style="margin-bottom: -10px">NPC Random Details Generator</h3><p>
         </p>
         <p style="font-size:11px; margin-top:50px; max-width: 300px; margin:auto;">(By default, the gender is randomized. You can generate NPCs of specific genders using the selectors below.)</p>
-        <div id="details-columns">
+        <div class="details-columns">
             <div><h4>Species</h4><p>
                 <span id="species"></span>
             </p></div>
@@ -121,15 +120,26 @@
                 <span id="gender"></span>
             </p></div>
         </div> 
+        <div class="details-columns">
+            <div><h4>Motive</h4><p>
+                <span id="motivation"></span>
+            </p></div>
+            <div><h4>Alignment</h4><p>
+                <span id="alignment"></span>
+            </p></div>
+            <div><h4>Class</h4><p>
+                <span id="class"></span>
+            </p></div>
+        </div>
         <button onclick="randomizeNPC()" style="margin-bottom: 40px;">Randomize</button>
 
         <fieldset>
         <p style="font-size:14px;">
             <span class="gender-column">
-                <input type="radio" class="rad-io" name="gender" checked> Random Gender<br>
-        <input type="radio" class="rad-io" name="gender"> Female<br>
-        <input type="radio" class="rad-io" name="gender"> Male<br>
-        <input type="radio" class="rad-io" name="gender"> Nonbinary
+                <input type="radio" class="rad-io" name="gender" onclick="changeGender()" checked> Random Gender<br>
+        <input type="radio" class="rad-io" name="gender" onclick="changeGender('fem')"> Female<br>
+        <input type="radio" class="rad-io" name="gender" onclick="changeGender('m')"> Male<br>
+        <input type="radio" class="rad-io" name="gender" onclick="changeGender('nb')"> Nonbinary
             </span>
     </p>
     </fieldset>
@@ -159,13 +169,11 @@
         </div>
         <div class="immersiveBox">
             <h3 id="5">Faerûn Calendar Conversion</h3>
-            <p>Today is the <span id="dateResult">4th Day of the Month of Hammer</span> (Common Name: <span id="commonResult">Deepwinter</span>)</p>
-            <p>Select any date to convert it to the Calendar of Harptos:</p>
             <h4><i>Your Date--</i></h4>
-            <input type="date">
+            <input type="date" id="cal">
             <p><h4><i>Date in the Forgotten Realms--</i></h4></p>
             <p><span id="convertResult">1st Day of Hammer (Deepwinter)</span></p>
-        </div>    
+        </div>   
         <script src="index.js"></script>
 </body>
 </html>

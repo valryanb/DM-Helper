@@ -474,7 +474,7 @@ overflow: hidden;
     float: left;
   }
 
-  #details-columns {
+  .details-columns {
     display: flex;
     flex-direction: row;
     font-size: 18px;

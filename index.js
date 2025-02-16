@@ -262,7 +262,6 @@ const species = ["Aarakocra",
 "Half-Elf",
 "Half-Orc",
 "Halfling",
-"Hobgoblin",
 "Human",
 "Kenku",
 "Kobold",
@@ -281,20 +280,205 @@ const species = ["Aarakocra",
 "Warforged",
 "Yuan-ti"];
 const age = ["Elder Adult","Young Adult","Teenager","Middle-Aged","Geriatric","Ancient"];
+const alignment = [
+"Lawful good",
+"Neutral good",
+"Chaotic good",
+"Lawful neutral",
+"True neutral",
+"Chaotic Neutral",
+"Lawful evil",
+"Neutral evil",
+"Chaotic evil"
+];
+const motivations = [
+    "Fame",
+    "Infamy",
+    "Wealth",
+    "Health",
+    "Success",
+    "Legacy",
+    "Resurrection",
+    "Family",
+    "Boredom",
+    "Revenge",
+    "Purpose",
+    "Refuge",
+    "Conquest",
+    "Immortality",
+    "Honor",
+    "Penance",
+    "Meaning",
+    "Answers",
+    "Knowledge",
+    "Destiny",
+    "Distraction"
+];
+
+const classes = [
+"Barbarian",
+"Bard",
+"Cleric",
+"Druid",
+"Fighter",
+"Monk",
+"Paladin",
+"Ranger",
+"Rogue",
+"Sorcerer",
+"Warlock",
+"Wizard",
+"Artificer",
+];
 
 let ageEl = document.getElementById("age");
 let speciesEl = document.getElementById("species");
 let genderEl = document.getElementById("gender");
+let alignmentEl = document.getElementById("alignment");
+let motivationEl = document.getElementById("motivation");
+let classEl = document.getElementById("class");
+
+let femaleGen = false;
+let randomGen = true;
+let nonbinaryGen = false;
+let maleGen = false;
 
 function randomizeNPC(){
     let randomSpecies = Math.floor(Math.random() * species.length);
     speciesEl.textContent = species[randomSpecies];
 
+    if (femaleGen){
+        let femaleGenders = genders.slice(0,2);
+        let randomGender = Math.floor(Math.random() * femaleGenders.length);
+        genderEl.textContent = femaleGenders[randomGender];
+    } 
+    
+    else if (maleGen){
+        let maleGenders = genders.slice(2,4);
+        let randomGender = Math.floor(Math.random() * maleGenders.length);
+        genderEl.textContent = maleGenders[randomGender];
+    }
+
+    else if (nonbinaryGen){
+        let nbGenders = genders.slice(4,6);
+        let randomGender = Math.floor(Math.random() * nbGenders.length);
+        genderEl.textContent = nbGenders[randomGender];
+    }
+
+    else {
     let randomGender = Math.floor(Math.random() * genders.length);
     genderEl.textContent = genders[randomGender];
+    }
     
     let randomAge = Math.floor(Math.random() * age.length);
     ageEl.textContent = age[randomAge];
+
+    let randomAlignment = Math.floor(Math.random() * alignment.length);
+    alignmentEl.textContent = alignment[randomAlignment];
+
+    let randomMotivation = Math.floor(Math.random() * motivations.length);
+    motivationEl.textContent = motivations[randomMotivation];
+
+    let randomClass = Math.floor(Math.random() * classes.length);
+    classEl.textContent = classes[randomClass];
+}
+
+function changeGender(genderSelection){
+if (genderSelection === "fem"){
+    maleGen = false;
+    randomGen = false;
+    nonbinaryGen = false;
+   femaleGen = true;
+   randomizeNPC();
+   return femaleGen;    
+} else if (genderSelection === "m"){
+    femaleGen = false;
+    randomGen = false;
+    nonbinaryGen = false;
+    maleGen = true;
+    randomizeNPC();
+    return maleGen;    
+}
+else if (genderSelection === "nb"){
+    femaleGen = false;
+    randomGen = false;
+    nonbinaryGen = true;
+    maleGen = false;
+    randomizeNPC();
+    return nonbinaryGen;    
+} else {
+    femaleGen = false;
+    randomGen = true;
+    nonbinaryGen = false;
+    maleGen = false;
+    randomizeNPC();
+    return randomGen;    
+}
 }
 
 randomizeNPC();
+
+const months = [{
+    "earthMonth": 1,
+    "name": "Hammer",
+    "common": "Deepwinter"
+},
+{    "earthMonth": 2,
+    "name": "Alturiak",
+    "common": "The Claw of Winter"
+},
+{    "earthMonth": 3,
+    "name": "Ches",
+    "common": "The Claw of Sunsets"
+},
+{    "earthMonth": 4,
+    "name": "Tarsakh",
+    "common": "The Claw of Storms"
+},
+{    "earthMonth": 5,
+    "name": "Mirtul",
+    "common": "The Melting"
+},
+{    "earthMonth": 6,
+    "name": "Kythorn",
+    "common": "The Time of Flowers"
+},
+{    "earthMonth": 7,
+    "name": "Flamerule",
+    "common": "Summertide"
+},
+{    "earthMonth": 8,
+    "name": "Eleasis",
+    "common": "Highsun"
+},
+{    "earthMonth": 9,
+    "name": "Eleint",
+    "common": "The Fading"
+},
+{    "earthMonth": 10,
+    "name": "Marpenoth",
+    "common": "Leaffall"
+},
+{    "earthMonth": 11,
+    "name": "Uktar",
+    "common": "The Rotting"
+},
+{    "earthMonth": 12,
+    "name": "Nightal",
+    "common": "The Drawing Down"
+}];
+
+
+today = new Date;
+todayMonth = months[JSON.stringify(today).slice(6,8) - 1];
+const convertedDateResult = document.getElementById("convertResult");
+convertedDateResult.innerText = `${JSON.stringify(today).slice(9,11)} ${todayMonth.name} (${todayMonth.common})`;
+
+document.getElementById('cal').addEventListener('change', function() {
+    selectedDate = new Date(this.value);
+    selectedDay = JSON.stringify(selectedDate).slice(9,11);
+    selectedMonth = JSON.stringify(selectedDate).slice(6,8);
+    monthCorrection = months[selectedMonth - 1];
+    dateResult = `${selectedDay} ${monthCorrection.name} (${monthCorrection.common})`;
+    convertedDateResult.innerText = dateResult;
+});
